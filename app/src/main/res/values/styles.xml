@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AllStyles">
+        <item name="stStrokeWidth">2dp</item>
+        <item name="stStrokeColor">#00FFFF</item>
+        <item name="stColorBackground">#000</item>
+        <item name="stRadius">12dp</item>
+        <item name="stTextSize">18sp</item>
+        <item name="stTextColor">#ff0</item>
+        <item name="stTextBold">true</item>
+        <item name="stSolidBackground">true</item>
+        <item name="stIconStart">@drawable/ic_baseline_warning_24</item>
+        <item name="stLength">SHORT</item>
+    </style>
+    <style name="warning">
+        <item name="strokeWidth">3dp</item>
+        <item name="stStrokeColor">#000</item>
+        <item name="stColorBackground">#94ffab</item>
+        <item name="stRadius">3dp</item>
+        <item name="stTextColor">#000</item>
+        <item name="stIconStart">@drawable/ic_baseline_warning_24</item>
+        <item name="stLength">SHORT</item>
+    </style>
+</resources>

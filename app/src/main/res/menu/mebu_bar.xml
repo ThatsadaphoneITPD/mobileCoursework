@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/mainActivity"
+        android:title="@string/Trip"
+        android:icon="@drawable/ic_bus_trip"
+       />
+    <item
+        android:id="@+id/expenseMainActivity2"
+        android:title="@string/Expense"
+        android:icon="@drawable/ic_baseline_monetization_on_24" />
+    <item
+        android:id="@+id/searchActivity"
+        android:title="@string/Search_ex"
+        android:icon="@drawable/ic_search" />
+    <item
+        android:id="@+id/uploadActivity"
+        android:title="@string/Upload"
+        android:icon="@drawable/ic_baseline_cloud_upload_24" />
+
+</menu>

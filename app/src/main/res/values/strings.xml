@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">TripExpense</string>
+    <string name="trip_title">Trip Title</string>
+    <string name="trip_destination">Destination</string>
+    <string name="trip_date">Date</string>
+    <string name="trip_risk">Risk</string>
+    <string name="trip_description">Description</string>
+    <string name="dateText">Date of Trip</string>
+    <string name="Risk_agreement">Risk require agreement</string>
+    <string name="Risk_No">NO</string>
+    <string name="Risk_Yes">YES</string>
+    <string name="Prick_date">Prick Date</string>
+    <string name="et_title">Edit Trip Title</string>
+    <string name="et_destination">Edit Destination</string>
+    <string name="et_date">Edit Date</string>
+    <string name="et_risk">Edit Risk</string>
+    <string name="et_description">Edit Description</string>
+    <string name="No_data">No Data</string>
+    <string name="Clear_all">ALl Delete</string>S
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="Trip">Trip</string>
+    <string name="Expense">Expense</string>
+    <string name="Search_ex">Search</string>
+    <string name="Upload">Upload</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>
