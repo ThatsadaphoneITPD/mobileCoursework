@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.gson.Gson;
@@ -35,10 +37,12 @@ public class UploadActivity extends AppCompatActivity {
     private Button btnSendRequestUpload;
     TextView textResponse, textInput;
     JsonArray detailList = new JsonArray() ;
-    String userId = "wm123";
+    String userId = "BeeUpLoadTrip";
     JsonObject mainObj = new JsonObject();
     JsonObject name1 = new JsonObject();
     JsonObject name2 = new JsonObject();
+    JsonObject names = new JsonObject();
+    TripDatabaseHelper tripDB;
 
 
 
@@ -52,6 +56,8 @@ public class UploadActivity extends AppCompatActivity {
         textResponse = findViewById(R.id.texRes);
         textInput = findViewById(R.id.textInputReq);
         btnSendRequestUpload = findViewById(R.id.btnSendPostRequest);
+        tripDB = new TripDatabaseHelper(UploadActivity.this);
+        dataToUpload();
         btnSendRequestUpload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -62,10 +68,10 @@ public class UploadActivity extends AppCompatActivity {
     private void UploadPost() {
 
         mainObj.addProperty("userId", userId);
-        name1.addProperty("name", "Android Conference");
-        name2.addProperty("name", "Client Meeting");
-        detailList.add(name1);
-        detailList.add(name2);
+//        name1.addProperty("name", "Android Conference");
+//        name2.addProperty("name", "Client Meeting");
+//        detailList.add(name1);
+//        detailList.add(name2);
         mainObj.add("detailList", detailList);
         textInput.setText("InputUpload: " + mainObj);
         ApiInterface apiInterface = RetrofitService.getRetrofitInstance().create(ApiInterface.class);
@@ -96,9 +102,25 @@ public class UploadActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<UserUpload> call, Throwable t) {
                 Log.e(TAG, "onFailure: " + t.getMessage());
-                textResponse.setText("onFailure: " + t.getMessage());
+//                textResponse.setText("onFailure: " + t.getMessage());
             }
         });
+    }
+    void dataToUpload() {
+        //new method in Main...
+        Cursor cursor = tripDB.readAllEXpense();
+        //Check empty data
+        if(cursor.getCount() == 0){
+            Toast.makeText(this, "No data", Toast.LENGTH_SHORT).show();
+        }else {
+            //Map or read out all data from cursor to MainActivity
+            while (cursor.moveToNext()){
+                names = new JsonObject();
+                names.addProperty("name", cursor.getString(1));
+                detailList.add(names);
+            }
+            textResponse.setText("'"+ detailList);
+        }
     }
     void ResponseDialog(String responseMessage){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);

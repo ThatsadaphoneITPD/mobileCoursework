@@ -221,7 +221,13 @@ public class TripDatabaseHelper extends SQLiteOpenHelper {
 
     //Search Trip
     public Cursor searchTrip(String keyword) {
-        String sql = "select * from " + TABLE_TRIP + " where " + COLUMN_TITLE + " like '%" + keyword + "%'";
+        String sql = "SELECT * FROM " + TABLE_TRIP + " " +
+                "WHERE " + COLUMN_TITLE + " LIKE \'%" + keyword + "%\'"
+                + " OR "
+                + COLUMN_DESTINATION + " LIKE \'%" + keyword + "%\'"
+                + " OR "
+                + COLUMN_DATE + " LIKE \'%" + keyword + "%\'"
+                + " --case-insensitive";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor;
         if(keyword != null|| keyword.length()>0){
@@ -231,5 +237,14 @@ public class TripDatabaseHelper extends SQLiteOpenHelper {
         }
         return cursor;
     }
+    public Cursor uploadTrips(){
+        String query = "SELECT * FROM " + TABLE_TRIP;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = null;
+        if(db != null){
+            cursor = db.rawQuery(query, null);
+        }
+        return cursor;
+    };
 
 }
